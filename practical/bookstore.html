@@ -1,27 +1,46 @@
 <!DOCTYPE html>
 <html lang="ko">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="./css/reset.css">
-    <link rel="stylesheet" href="./css/bookstore.css">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="./css/reset.css" />
+    <link rel="stylesheet" href="./css/bookstore.css" />
     <title>BOOK STORE</title>
-</head>
-<body>
+  </head>
+  <body>
     <main>
+      <section id="book">
         <div class="book-img">
-            <div class="page">
-                <div class="front">FRONT</div>
-                <div class="back">BACK</div>
-            </div>
-            <div class="side">SIDE</div>
+          <div class="page">
+            <div class="front"></div>
+            <div class="back"></div>
+          </div>
+          <div class="side"></div>
         </div>
+      </section>
+      <section id="book-info">
+        <h1>스파클</h1>
+        <p class="author">지은이 | 최현진</p>
+        <blockquote>"내가 원하는 대로 살 것이다. 찬란하게"</blockquote>
+        <div class="my-thoughts">
+          <h3>내가 이 책을 좋아하는 이유</h3>
+          <p>
+            『스파클』은 <strong>‘나답게 살아간다’</strong>는 것이 얼마나 어려우면서도 멋진
+            일인지 알려준 책입니다. 주인공이 불안과 혼란 속에서도 자신만의 길을
+            찾아가려는 모습이, 앞으로 나의 모습이 되었으면 좋겠다고
+            생각했습니다. 다른 사람의 기대보다 <strong>‘내가 진짜 원하는 것’</strong>을
+            선택하는 용기의 중요함을 깨달았고, 이제는 누군가의 시선보다 나
+            자신의 빛을 믿고 살아가고 싶다고 다짐하게 되었습니다.
+          </p>
+          <p class="tagline">"모두가 자기만의 빛으로 반짝이길 바라며."</p>
+        </div>
+      </section>
     </main>
     <script>
-        const book = document.querySelector(".book-img");
-        book.addEventListener("click",()=>{
-            book.classList.toggle("flipped");
-        });
+      const book = document.querySelector(".book-img");
+      book.addEventListener("click", () => {
+        book.classList.toggle("flipped");
+      });
     </script>
-</body>
+  </body>
 </html>
