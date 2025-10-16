@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./css/reset.css">
+    <link rel="stylesheet" href="./css/bookstore.css">
+    <title>BOOK STORE</title>
+</head>
+<body>
+    <main>
+        <div class="book-img">
+            <div class="page">
+                <div class="front">FRONT</div>
+                <div class="back">BACK</div>
+            </div>
+            <div class="side">SIDE</div>
+        </div>
+    </main>
+    <script>
+        const book = document.querySelector(".book-img");
+        book.addEventListener("click",()=>{
+            book.classList.toggle("flipped");
+        });
+    </script>
+</body>
+</html>
