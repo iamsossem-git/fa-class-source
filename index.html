@@ -1,17 +1,23 @@
 <!DOCTYPE html>
 <html lang="ko">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>수업예제</title>    
-</head>
-<body>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>수업예제</title>
+  </head>
+  <body>
     <ul>
-        <li><a href="./animation/flip.html" target="_blank">카드뒤집기</a></li>
-        <li><a href="./practical/circle-loading.html" target="_blank">원형로딩바</a></li>
-        <li><a href="./practical/square-loading.html" target="_blank">사각로딩바</a></li>
-        <li><a href="./practical/skills.html" target="_blank">스킬프로그래스</a></li>
-        <li><a href="./practical/product.html" target="_blank"">포지션_상품상세</a></li>
+      <li><a href="./animation/flip.html">카드뒤집기</a></li>
+      <li><a href="./practical/circle-loading.html">원형로딩바</a></li>
+      <li><a href="./practical/square-loading.html">사각로딩바</a></li>
+      <li><a href="./practical/skills.html">스킬프로그래스</a></li>
+      <li><a href="./practical/product.html">포지션_상품상세</a></li>
+      <li><a href="./practical/tooltip.html">포지션_툴팁</a></li>
     </ul>
-</body>
+    <script>      
+      document.querySelectorAll("li a").forEach((link) => {
+        link.setAttribute("target", "_blank");
+      });
+    </script>
+  </body>
 </html>

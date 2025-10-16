@@ -1,0 +1,49 @@
+@charset "utf-8";
+
+#container{
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+#container > li{
+    position: relative;
+    width: 150px;
+    height: 150px;
+    cursor: pointer;
+}
+#container .tooltip{
+    position: absolute;
+    top: -90px;    
+    left: 50%;
+    transform: translateX(-50%);
+    opacity: 0;
+    transition: all 0.5s;
+}
+#container > li:hover > .tooltip{
+    opacity: 1;
+}
+#container img{
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+}
+#container .txt{
+    background-color: #222;
+    color: #fff;
+    width: 250px;
+    padding: 1rem;
+    border-radius: 1rem;
+    text-align: center;
+}
+#container .arrow{
+    width: 15px;
+    height: 15px;
+    background-color: #222;
+    position: absolute;
+    bottom: -7px;
+    left: 50%;
+    transform: translateX(-50%) rotate(45deg);
+}
