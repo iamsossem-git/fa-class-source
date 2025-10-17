@@ -23,13 +23,20 @@ section#book-info  *{
 }
 section#book-info .tagline{
     display: inline-block;
+    padding: 0.5rem 1rem;
     background-color: #222;
     color: yellow;
-    animation: ani 1s linear infinite;
+    animation: ani 3s linear infinite;    
 }
 @keyframes ani {
-    0%,100%{ opacity: 0.6;}
-    50%{ opacity: 1;}
+    0%,100%{ 
+        opacity: 1;
+        transform: translateX(0);
+    }
+    50%{ 
+        opacity: 0.6;
+        transform: translateX(170px);
+    }
 }
 .book-img{
     width: 400px;
@@ -38,7 +45,7 @@ section#book-info .tagline{
     /* transform: rotateY(130deg); */
     transform-style: preserve-3d;
     transition: 0.5s;
-    box-shadow: 20px 20px 80px rgba(0,0,0,0.2);
+    box-shadow: 20px 20px 80px rgba(0,0,0,0.2);    
 }
 .book-img.flipped{
     transform: rotateY(180deg);
