@@ -1,0 +1,161 @@
+@charset "utf-8";
+:root{
+    --main-color : #3F51B5;
+}
+body{
+    color: var(--main-color);
+}
+/* header */
+nav{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem;
+    position: relative;
+}
+nav > .menu-icon{
+    display: block;
+    cursor: pointer;
+    width: 30px;
+    height: 30px;
+    position: relative;
+}
+nav > .menu-icon > span{
+    display: block;
+    width: 100%;
+    height: 2px;
+    background-color: var(--main-color);
+    position: absolute;
+    left: 0;
+    transition: 0.3s;
+}
+nav > .menu-icon > span:nth-child(1){
+    top: 0;
+}
+nav > .menu-icon > span:nth-child(2){
+    top: calc(50% - 1px);
+}
+nav > .menu-icon > span:nth-child(3){
+    top: calc(100% - 2px);
+}
+input[id=trigger]{
+    display: none;
+}
+/* checkbox가 체크가 되면 span로테이션 */
+input[id=trigger]:checked + .menu-icon>span:nth-child(1){
+    top: calc(50% - 1px);
+    transform: rotate(45deg);
+}
+input[id=trigger]:checked + .menu-icon>span:nth-child(2){
+    opacity: 0;
+}
+input[id=trigger]:checked + .menu-icon>span:nth-child(3){
+    top: calc(50% - 1px);
+    transform: rotate(-45deg);
+}
+/* gng */
+input[id=trigger]:checked ~ .gnb{
+    height: auto;
+}
+input[id=trigger]:checked ~ .gnb > li{
+    opacity: 1;
+}
+.gnb{
+    /* display: none; */
+    height: 0;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    background-color: var(--main-color);
+    color: #fff;
+    width: 100%;    
+}
+.gnb > li{
+    opacity: 0;
+    padding: 0.5rem 1rem;
+    border-bottom: #c1c4d2;    
+}
+/* banner image */
+.banner > img{    
+    width: 100%;
+    height: auto;
+}
+/* section #we */
+section{
+    padding: 2rem;
+}
+section > h2{
+    text-align: center;    
+}
+section p{
+    text-align: center;
+}
+
+section#we {
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+    width: 80%;
+    margin: 0 auto;
+}
+#promotion{
+    width: 80%;
+    margin: 0 auto;
+}
+#promotion > ul{ 
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+}
+#promotion > ul > li{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 1rem;
+}
+
+
+/* 반응형 미디어 쿼리 */
+@media screen and (min-width:768px){
+    nav > .menu-icon{
+        display: none;
+    }    
+    .gnb{
+        height: auto;        
+        display: flex;
+        justify-content: flex-end;
+        gap: 1rem;
+        margin-right: 2rem;
+        position: static;
+        background: none;        
+        color: var(--main-color);
+    }
+    .gnb > li{
+        opacity: 1;
+    }
+    #promotion > ul{
+        flex-direction: row;
+    }
+}
+/* 데스크탑 미디어 쿼리 */
+@media screen and (min-width:1024px){
+    section#we{
+        flex-direction: row;
+        align-items: center;        
+    }
+    section#we > h2{
+        text-align: left;
+        /* flex: 1; */
+        width: 200px;
+    }
+    section#we > p{
+        /* flex: 2; */
+        flex: 1;
+    }
+    section#we > p{
+        text-align: left;
+        border-left: 1px solid var(--main-color);
+        padding-left: 2rem;
+    }
+}

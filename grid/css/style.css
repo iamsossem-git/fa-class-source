@@ -3,12 +3,8 @@ body{
     background-color: #222;
     perspective: 800px;    
 }
-/* 임시저장 */
 input{
-    position: fixed;
-    top: 0;
-    left: 0;
-    z-index: 100;
+    display: none;
 }
 /* icon */
 input[id=menu-check]:checked ~ nav{
@@ -79,6 +75,12 @@ input[id=menu2]:checked ~ main > #girl,
 input[id=menu3]:checked ~ main > #kids{
     opacity: 1;
 }
+/* menu를 각각 클릭하면 각각의 section 아래 있는 p태그들이 로테이션 */
+input[id=menu1]:checked ~ main > #homme > p,
+input[id=menu2]:checked ~ main > #girl > p,
+input[id=menu3]:checked ~ main > #kids > p{
+    transform: rotateY(0deg);
+}
 main > section{
     width: 100%;
     height: 100%;
@@ -100,6 +102,8 @@ main > section > p{
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
+    transition: 1s;
+    transform: rotateY(180deg);
 }
 main > #homme{
     z-index: 1;
