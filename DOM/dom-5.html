@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>a태그 속성 변경</title>
+    <style>
+        *{ margin: 0; padding: 0;}
+        a{ 
+            text-decoration: none; 
+            color: inherit;
+            font-size: 4rem;
+        }
+    </style>
+</head>
+<body>
+    <a href="#" target="_blank">사이트이동</a>
+    <div class="btn-wrap">
+        <button>네이버</button>
+        <button>다음</button>
+        <button>구글</button>
+    </div>
+    <script>
+        //a 태그의 요소를 선택 : aElem.href
+        const aElem = document.querySelector('a');
+        //버튼 요소 선택
+        const naverBtn = document.querySelector('.btn-wrap>button:nth-child(1)');
+        naverBtn.onclick = ()=>{
+            aElem.href = 'https://naver.com';
+        }
+        const daumBtn = document.querySelector('.btn-wrap>button:nth-child(2)');
+        daumBtn.onclick = ()=>{
+            aElem.href = 'https://daum.net';
+        }
+        const googleBtn = document.querySelector('.btn-wrap>button:nth-child(3)');
+        googleBtn.onclick = ()=>{
+            aElem.href = 'https://google.com';
+        }
+    </script>
+</body>
+</html>

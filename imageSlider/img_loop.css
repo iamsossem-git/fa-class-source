@@ -1,0 +1,40 @@
+@charset 'utf-8';
+
+*{ margin: 0; padding: 0;}
+ul{ list-style: none;}
+body{ 
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 1rem;
+}
+main{
+  width: 300px;
+  height: 300px;
+  overflow: hidden;
+  position: relative;
+}
+
+ul.slider{
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 1500px;
+  display: flex;
+  transition: 0.5s;
+  li{
+    width: 100%;
+    img{
+      width: 100%;
+    }
+  }
+}
+.btn-wrap{
+  text-align: center;
+  button{
+    font-size: 2rem;
+    padding: 10px;
+  }  
+}
