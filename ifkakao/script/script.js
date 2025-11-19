@@ -59,7 +59,7 @@ const slideInit = (view)=>{
 
   //해당 위치로 이동하는 공통 함수
   const currentGoto = (time)=>{
-    slideList.style.transition = time;
+    slideList.style.transition = time;  //0.5s
     slideList.style.transform = `translateX(-${current*widthGap}%)`;
   }
 
@@ -150,4 +150,14 @@ tabItems.forEach((ulElem)=>{
       list.classList.toggle('show');
     });
   });
+});
+
+//header 영역에 scroll-popup에 show클래스가 추가/삭제
+const scrollElem = document.querySelector('.scroll-popup');
+window.addEventListener('scroll',()=>{
+  if( window.scrollY > 0 ){
+    scrollElem.classList.add('show');
+  } else {
+    scrollElem.classList.remove('show');
+  }
 });

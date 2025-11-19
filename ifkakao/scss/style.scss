@@ -17,6 +17,35 @@ header {
   width: 100%;
   height: 100vh;
 }
+.scroll-popup{
+  opacity: 0;
+  transform: translateY(50vh);  //화면 아래에 보이게됨
+  transition: 0.5s;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(255,255,255,0.5);
+  backdrop-filter: blur(50px);
+  @include mixin.flex-center;
+  flex-direction: column;
+  text-align: center;
+  h1{
+    @include mixin.text-style(display);
+  }
+  p:nth-of-type(1){
+    @include mixin.text-style(title);
+    color: $gray-500;    
+  }
+  .yellow{
+    @include mixin.btn-base-yellow;
+  }
+}
+.scroll-popup.show{
+  opacity: 1;
+  transform: translateY(0);  //제자리
+}
 nav {
   position: absolute;
   top: 0;
@@ -79,7 +108,9 @@ nav {
         font-size: 2rem;
         font-weight: 700;
         gap: 0;
-        @include mixin.respond{ display: none;}
+        @include mixin.respond {
+          display: none;
+        }
       }
     }
     .popup-menu {
@@ -87,23 +118,23 @@ nav {
       color: $white;
       border-radius: $radius-ss;
       margin: 1rem 0;
-      @include mixin.respond{
+      @include mixin.respond {
         @include mixin.flex-center(row);
-        margin: 0;        
+        margin: 0;
       }
       li {
         border-bottom: 1px solid $gray-700;
         padding: 2rem;
-        @include mixin.respond{
+        @include mixin.respond {
           border: none;
           padding: 0.5rem 2rem;
         }
         a {
           font-size: $font-h2;
-          @include mixin.respond{
+          @include mixin.respond {
             font-size: $font-BL;
           }
-          &:hover{
+          &:hover {
             color: $gray-700;
           }
         }
@@ -118,7 +149,7 @@ nav {
       border-radius: $radius-ss;
       padding: 2rem;
       font-size: $font-h2;
-      @include mixin.respond{
+      @include mixin.respond {
         // background: none;
         background-color: transparent;
         color: $gray-900;
@@ -144,245 +175,330 @@ div.video_box {
 /** main **/
 main {
   padding: 3rem;
-  @include mixin.respond{
+  @include mixin.respond {
     padding: 5rem;
   }
-  section{
+  section {
     margin: 5rem 0;
-    h2{ margin-bottom: 2rem;}
+    h2 {
+      margin-bottom: 2rem;
+    }
   }
-  .sec-title{
-    @include mixin.text-style(display);    
+  .sec-title {
+    @include mixin.text-style(display);
   }
-  .sec-desc{
+  .sec-desc {
     @include mixin.text-style(title);
     color: $gray-700;
     margin: 2rem 0;
   }
-  .sec-sub{
+  .sec-sub {
     @include mixin.text-style(display);
     color: $gray-700;
   }
-  .btn-wrap{
+  .btn-wrap {
     @include mixin.flex-center;
     margin: 1rem 0;
-    div{
+    div {
       width: 48px;
-      height: 48px;      
+      height: 48px;
       @include mixin.btn-circle-arrow;
       font-size: 36px;
     }
   }
   //이미지 슬라이드 공통 항목
-  .slide-wrap{
-    .slide-view{
+  .slide-wrap {
+    .slide-view {
       background-color: #ddd;
       aspect-ratio: 4/5;
-      @include mixin.respond{
+      @include mixin.respond {
         aspect-ratio: 15/7;
       }
       position: relative;
       border-radius: $radius-xl;
       overflow: hidden;
-      .slide-list{
-        @include mixin.flex-layout(row,flex-start,center,0);
+      .slide-list {
+        @include mixin.flex-layout(row, flex-start, center, 0);
         height: 100%;
         transition: 0.5s;
-        li{
+        li {
           height: 100%;
-          img{
+          img {
             height: 100%;
             object-fit: cover;
             object-position: center;
           }
         }
       }
-      .indicator{
+      .indicator {
         position: absolute;
         bottom: 1rem;
         left: 50%;
         transform: translateX(-50%);
         @include mixin.flex-center;
-        li{
+        li {
           cursor: pointer;
           width: 20px;
           height: 20px;
           border-radius: 50%;
-          background-color: rgba(255,255,255,0.6);          
+          background-color: rgba(255, 255, 255, 0.6);
         }
-        li.active{
+        li.active {
           background-color: $white;
           // background-color: red;
         }
       }
-    }    
+    }
   }
-}
-#section-1 {
 }
 #section-2 {
   overflow: hidden;
-  .card-list{
+  // overflow: visible;  
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+  scrollbar-width: none;
+  .card-list {    
     margin: 3rem 0;
     width: 900px;
-    @include mixin.flex-layout(row, flex-start, flex-start);     
-    @include mixin.respond{
+    @include mixin.flex-layout(row, flex-start, flex-start);
+    @include mixin.respond {
       width: 100%;
       justify-content: space-between;
-    }   
-    li{
+    }
+    li {
       width: 300px;
-      @include mixin.respond{
+      @include mixin.respond {
         width: 30%;
       }
-      .imgWrap{        
+      .imgWrap {
         aspect-ratio: 1/1;
         background-size: cover;
         border-radius: $radius-md;
         overflow: hidden;
-        p{
+        p {
           @include mixin.text-style(display);
           width: 100%;
           height: 100%;
           @include mixin.flex-center;
           transition: 0.3s;
-          &:hover{
-            background-color: rgba(255,255,255,0.2);
+          &:hover {
+            background-color: rgba(255, 255, 255, 0.2);
             backdrop-filter: blur(50px);
             color: $white;
           }
         }
       }
-      .txtWrap{
+      .txtWrap {
         width: 100%;
-        @include mixin.respond{
+        @include mixin.respond {
           width: 60%;
         }
         word-break: keep-all;
         overflow-wrap: break-word;
-        h3{
+        h3 {
           @include mixin.text-style(title);
           margin: 0.5rem 0;
         }
-        p{
+        p {
           @include mixin.text-style(body-large);
           color: $gray-500;
           margin: 0.5rem 0;
         }
       }
-    }    
-    li:nth-child(1){
-      .imgWrap{ 
+    }
+    li:nth-child(1) {
+      .imgWrap {
         background-color: $card-yellow;
         background-image: url(../assets/images/day1.png);
       }
     }
-    li:nth-child(2){
-      .imgWrap{ 
+    li:nth-child(2) {
+      .imgWrap {
         background-color: $card-blue;
         background-image: url(../assets/images/day2.png);
       }
     }
-    li:nth-child(3){
-      .imgWrap{ 
+    li:nth-child(3) {
+      .imgWrap {
         background-color: $card-pink;
         background-image: url(../assets/images/krewday.png);
       }
     }
-  }  
+  }
 }
+//키노트 섹션 scss
 #section-3 {
+  .card-wrap {
+    .card-view {
+      position: relative;      
+      overflow: hidden;
+      ul.card-list {
+        @include mixin.flex-layout(row, flex-start, flex-start);
+        width: calc(300px * 6);
+        gap: 0;
+        > li {
+          margin: 0 0.5rem;
+          width: 300px;
+          flex: 0 0 300px;
+          height: 400px;
+          border-radius: $radius-md;
+          overflow: hidden;
+          .top {
+            height: 50%;
+            background-color: $card-yellow;
+            padding: 1rem;
+            .caption {
+              @include mixin.flex-layout(row, flex-start, center);
+              li {
+                background-color: $white;
+                border-radius: $radius-ss;
+                padding: 0.5rem;
+              }
+            }
+            h4 {
+              @include mixin.text-style(body-large);
+              margin: 1rem 0;
+            }
+          }
+          img {
+            width: 100%;
+            height: 50%;
+          }
+        }
+      }
+      //색상 변경을 따로 설정
+      // ul.card-list > li:nth-child(1) .top {
+      //   background-color: $card-yellow;
+      // }
+      // ul.card-list > li:nth-child(2) .top {
+      //   background-color: $card-puple;
+      // }
+      // ul.card-list > li:nth-child(3) .top {
+      //   background-color: $card-blue;
+      // }
+      // ul.card-list > li:nth-child(4) .top {
+      //   background-color: $card-mint;
+      // }
+      // ul.card-list > li:nth-child(5) .top {
+      //   background-color: $card-blue;
+      // }
+      // ul.card-list > li:nth-child(6) .top {
+      //   background-color: $card-pink;
+      // }
+      .overlap{
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        // background-color: #ddd;
+        background-image: linear-gradient(to right,
+          rgba(255,255,255,1) 0%,
+          rgba(255,255,255,0) 20%,
+          rgba(255,255,255,0) 80%,
+          rgba(255,255,255,1) 100%
+        );
+      }
+    }
+  }
 }
 #section-4 {
-  .map{
+  .map {
     margin: 2rem 0;
     // height: 80vh;
     @include mixin.flex-layout(column-reverse, flex-start, stretch);
-    @include mixin.respond{
+    @include mixin.respond {
       flex-direction: row;
     }
-    .txt{
+    .txt {
       flex: 1;
       background-color: $brand-yellow;
       border-radius: $radius-xl;
       padding: 2rem;
-      .title{
+      .title {
         margin-bottom: 6rem;
       }
-      *{ margin: 1rem 0}
-      p{
+      * {
+        margin: 1rem 0;
+      }
+      p {
         @include mixin.text-style(title);
       }
-      h3{
+      h3 {
         @include mixin.text-style(heading-2);
       }
-      p.btn{
+      p.btn {
         @include mixin.btn-base-black;
       }
     }
-    img{
+    img {
       flex: 1;
       aspect-ratio: 3/2;
-      @include mixin.respond{        
+      @include mixin.respond {
         width: 50%;
       }
     }
   }
 }
 #section-5 {
-  ul.top{
+  ul.top {
     margin: 2rem 0;
-    @include mixin.flex-layout(row,flex-start,center);
-    li{ 
+    @include mixin.flex-layout(row, flex-start, center);
+    li {
       cursor: pointer;
-      @include mixin.text-style(title); 
+      @include mixin.text-style(title);
       color: $gray-500;
     }
-    li.active{ color: $gray-900;}
+    li.active {
+      color: $gray-900;
+    }
   }
-  div.tabitem{
-    position: relative;  
-    min-height: 50vh;  
-    ul.item{
-      position: absolute;      
+  div.tabitem {
+    position: relative;
+    min-height: 50vh;
+    @include mixin.respond {
+      min-height: 70vh;
+    }
+    ul.item {
+      position: absolute;
       top: 0;
       left: 0;
       width: 100%;
       display: none;
     }
-    ul.active{
+    ul.active {
       display: block;
     }
-    li{
+    li {
       cursor: pointer;
       padding: 1rem 0;
-      border-top: 1px solid $gray-200; 
-      &:last-child{
-        border-bottom: 1px solid $gray-200; 
+      border-top: 1px solid $gray-200;
+      &:last-child {
+        border-bottom: 1px solid $gray-200;
       }
-    }  
-    li.show .a{
+    }
+    li.show .a {
       display: block;
     }
-    li.show .q p:last-child{
+    li.show .q p:last-child {
       @include mixin.btn-circle-yellow;
     }
-    p{
+    p {
       @include mixin.text-style(body-large);
-    }  
-    .q{
-      @include mixin.flex-layout(row,space-between,center);
+    }
+    .q {
+      @include mixin.flex-layout(row, space-between, center);
       margin: 1rem 0;
-      p:first-child{
+      p:first-child {
         flex: 1;
       }
-      p:last-child{
+      p:last-child {
         width: 20px;
         height: 20px;
         @include mixin.btn-circle-black;
       }
     }
-    .a{
+    .a {
       @include mixin.text-style(body-medium);
       color: $gray-700;
       display: none;
@@ -392,47 +508,47 @@ main {
 #section-6 {
   position: relative;
   min-height: 450px;
-  @include mixin.respond{
+  @include mixin.respond {
     margin: 3rem 0;
     position: static;
     min-height: auto;
-    @include mixin.flex-layout(row,space-between,center);
+    @include mixin.flex-layout(row, space-between, center);
   }
-  > *{
-    position: absolute;    
+  > * {
+    position: absolute;
     left: 0;
-    @include mixin.respond{
+    @include mixin.respond {
       position: static;
     }
   }
-  .txt{
+  .txt {
     z-index: 3;
     top: -3rem;
     width: 70%;
-    @include mixin.respond{
+    @include mixin.respond {
       width: 50%;
     }
-    p:first-child{
+    p:first-child {
       margin: 2rem 0;
       @include mixin.text-style(heading-2);
     }
-    .btn{
+    .btn {
       @include mixin.btn-base-black;
     }
   }
-  img{
+  img {
     top: 3rem;
-    @include mixin.respond{
+    @include mixin.respond {
       width: 50%;
     }
   }
 }
 #section-7 {
   display: grid;
-  grid-template-columns: repeat(2,1fr);
+  grid-template-columns: repeat(2, 1fr);
   gap: 1rem;
-  @include mixin.respond{
-    grid-template-columns: repeat(5,1fr);
+  @include mixin.respond {
+    grid-template-columns: repeat(5, 1fr);
   }
 }
 
@@ -444,16 +560,16 @@ footer {
 }
 #foot-menu {
   @include mixin.flex-layout(row, space-between, flex-start);
-  ul{
+  ul {
     @include mixin.flex-layout(column);
     @include mixin.text-style(body-medium);
-    @include mixin.respond{
+    @include mixin.respond {
       flex-direction: row;
     }
   }
-  .btn{
+  .btn {
     width: 48px;
-    height: 48px;    
+    height: 48px;
     @include mixin.btn-circle-arrow;
     font-size: $font-h2;
   }
@@ -461,22 +577,28 @@ footer {
 #foot-ani {
   overflow: hidden;
   margin-top: 30vh;
-  span{
+  span {
     font-size: 120px;
   }
-  img{
+  img {
     display: inline-block;
     width: 180px;
   }
-  .track{
+  .track {
     @include mixin.flex-layout(row);
     white-space: nowrap;
-    width: 250%;
+    width: calc(800px * 4);
     animation: marquee 10s linear infinite;
-    div{ flex: 1;}
+    div {
+      flex: 0 0 800px;
+    }
   }
 }
 @keyframes marquee {
-  0%{ transform: translateX(0);}
-  100%{ transform: translateX(-50%);}
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-50%);
+  }
 }
